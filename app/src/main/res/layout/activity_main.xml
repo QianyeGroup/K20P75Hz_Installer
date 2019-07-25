@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/refresh"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:gravity="center"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<RadioButton
+			android:id="@+id/seven"
+			android:onClick="seven_onClick"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="75Hz"
+			android:checked="true"/>
+
+		<RadioButton
+			android:id="@+id/custom"
+			android:onClick="custom_onClick"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="自定义"/>
+
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/custom_tips"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="请选择dtbo的img，选错变砖概不负责。"
+		android:visibility="gone"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<EditText
+			android:id="@+id/custom_input"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="请选择文件"
+			android:gravity="center"
+			android:visibility="gone"
+			android:singleLine="true"/>
+
+		<Button
+			android:id="@+id/custom_select"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="选择"
+			android:onClick="select_onClick"
+			android:visibility="gone"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="install"
+			android:text="安装"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="uninstall"
+			android:text="卸载"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="test"
+			android:text="测试刷新率"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="join"
+			android:text="加群交流"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="get81"
+			android:text="获取81Hz"
+			android:textAllCaps="false"/>
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:onClick="atomSand"
+		android:text="刷新率作者：酷安@AtomSand，点击打开主页。"
+		android:gravity="center"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="pay"
+			android:text="打赏(真心)"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAllCaps="false"
+			android:onClick="pay_atomSand"
+			android:text="打赏(AtomSand)"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+
