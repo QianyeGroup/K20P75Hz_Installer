@@ -3,10 +3,8 @@ package cn.iqianye.miui.k20p.screen;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Display;
@@ -21,11 +19,9 @@ import androidx.legacy.v4.R;
 import cn.iqianye.miui.k20p.screen.utils.AssetsUtils;
 import cn.iqianye.miui.k20p.screen.utils.MarketUtils;
 import cn.iqianye.miui.k20p.screen.utils.OtherUtils;
+import cn.iqianye.miui.k20p.screen.utils.UriToPathUtils;
 import com.jaredrummler.android.shell.Shell;
 import java.io.File;
-import java.net.URISyntaxException;
-import android.provider.MediaStore;
-import cn.iqianye.miui.k20p.screen.utils.UriToPathUtils;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -52,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 			b.show();
         }
 		else
-		if (OtherUtils.isSupport())
+		if (!OtherUtils.isSupport())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
 			b.setTitle("错误");
@@ -121,17 +117,10 @@ public class MainActivity extends AppCompatActivity
 	public void install(View view)
 	{
 		RadioButton seven = findViewById(R.id.seven);
+		RadioButton custom = findViewById(R.id.custom);
 		if (seven.isChecked())
 		{
 			imgFile = getExternalCacheDir().getAbsolutePath() + "/dtbo_75Hz.img";
-		}
-		else
-		if (imgFile == null)
-		{
-			Toast.makeText(this, "请选择文件", Toast.LENGTH_LONG).show();
-		}
-		else
-		{
 			Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
 			AlertDialog.Builder b = new AlertDialog.Builder(this);
 			b.setTitle("成功");
@@ -144,6 +133,34 @@ public class MainActivity extends AppCompatActivity
 					}
 				});
 			b.show();
+			imgFile = null;
+		}
+		else
+		if (custom.isChecked())
+		{
+			if (imgFile == null)
+			{
+				Toast.makeText(this, "请选择文件", Toast.LENGTH_LONG).show();
+			}
+			else
+			{
+				Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
+				AlertDialog.Builder b = new AlertDialog.Builder(this);
+				b.setTitle("成功");
+				b.setMessage("刷入dtbo分区成功，请点击确认重启查看效果！");
+				b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface d, int i)
+						{
+							Shell.SU.run("reboot");
+						}
+					});
+				b.show();
+				imgFile = null;
+				EditText e = findViewById(R.id.custom_input);
+				e.setText(imgFile);
+
+			}
 		}
 	}
 
@@ -165,7 +182,7 @@ public class MainActivity extends AppCompatActivity
 
 	public void test(View view)
 	{
-		MarketUtils.launchAppDetail(this, "cn.iqianye.displaytest", null);
+		MarketUtils.launchAppDetail(this, "cn.iqianye.displaytest", "com.coolapk.market");
 	}
 
 	public void pay(View view)
@@ -258,7 +275,7 @@ public class MainActivity extends AppCompatActivity
 				if (resultCode == RESULT_OK)
 				{
 					Uri uri = data.getData();
-					imgFile = UriToPathUtils.getRealFilePath(this,uri);
+					imgFile = UriToPathUtils.getRealFilePath(this, uri);
 					EditText e = findViewById(R.id.custom_input);
 					e.setText(imgFile);
 				}
