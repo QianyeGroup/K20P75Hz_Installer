@@ -19,9 +19,10 @@ import androidx.legacy.v4.R;
 import cn.iqianye.miui.k20p.screen.utils.AssetsUtils;
 import cn.iqianye.miui.k20p.screen.utils.MarketUtils;
 import cn.iqianye.miui.k20p.screen.utils.OtherUtils;
-import cn.iqianye.miui.k20p.screen.utils.UriToPathUtils;
+import cn.iqianye.miui.k20p.screen.utils.FileUtils;
 import com.jaredrummler.android.shell.Shell;
 import java.io.File;
+import cn.iqianye.miui.k20p.screen.utils.UpdateUtils;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -32,13 +33,18 @@ public class MainActivity extends AppCompatActivity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+		String[] verArr = UpdateUtils.getNewVersionInfo("1907260");
+		Toast.makeText(this,verArr[1],Toast.LENGTH_LONG).show();
+		
+		
+		
 		if (!OtherUtils.isRaphael())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle("错误");
-			b.setMessage("不支持您的设备，只支持Redmi K20 Pro(raphael)！");
+			b.setTitle(R.string.dialog_title);
+			b.setMessage(R.string.no_raphael);
 			b.setCancelable(false);
-			b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 				{
 					public void onClick(DialogInterface d, int i)
 					{
@@ -48,13 +54,13 @@ public class MainActivity extends AppCompatActivity
 			b.show();
         }
 		else
-		if (!OtherUtils.isSupport())
+		if (OtherUtils.isSupport())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle("错误");
-			b.setMessage("不支持401驱动的MIUI版本，请降级至9.7.11(包括)之前的版本！");
+			b.setTitle(R.string.dialog_title);
+			b.setMessage(R.string.no_support_711);
 			b.setCancelable(false);
-			b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 				{
 					public void onClick(DialogInterface d, int i)
 					{
@@ -67,10 +73,10 @@ public class MainActivity extends AppCompatActivity
 		if (!OtherUtils.checkRoot())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle("错误");
-			b.setMessage("获取ROOT权限失败，请检查是否给予本软件ROOT权限！");
+			b.setTitle(R.string.dialog_title);
+			b.setMessage(R.string.no_root);
 			b.setCancelable(false);
-			b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 				{
 					public void onClick(DialogInterface d, int i)
 					{
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 		Display display = getWindowManager().getDefaultDisplay();
 		float refreshRate = display.getRefreshRate();
 		TextView t = findViewById(R.id.refresh);
-		t.setText("当前刷新率(仅供参考)\n" + refreshRate + " Hz");
+		t.setText(this.getString(R.string.refresh_rate) + refreshRate + " Hz");
 		String lanucherNumberPath = getExternalFilesDir("").getAbsolutePath() + "/.lanucherNumber";
         int lanucherNumber = 0;
         if (new File(lanucherNumberPath).exists())
@@ -93,17 +99,17 @@ public class MainActivity extends AppCompatActivity
             if (lanucherNumber == 2)
             {
 				AlertDialog.Builder b = new AlertDialog.Builder(this);
-                b.setTitle("提示");
-                b.setMessage("喜欢这个APP吗？给个五星好评可好！");
+                b.setTitle(R.string.dialog_title);
+                b.setMessage(R.string.score);
                 b.setCancelable(false);
-                b.setPositiveButton("好", new DialogInterface.OnClickListener()
+                b.setPositiveButton(R.string.good, new DialogInterface.OnClickListener()
 					{
 						public void onClick(DialogInterface d, int i)
                         {
 							MarketUtils.launchAppDetail(MainActivity.this, "cn.iqianye.miui.k20p.screen", "com.coolapk.market");
 						}
 					});
-				b.setNegativeButton("我就不！", null);
+				b.setNegativeButton(R.string.no_good, null);
                 b.show();
 			}
             lanucherNumber++;
@@ -123,9 +129,9 @@ public class MainActivity extends AppCompatActivity
 			imgFile = getExternalCacheDir().getAbsolutePath() + "/dtbo_75Hz.img";
 			Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
 			AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle("成功");
-			b.setMessage("刷入dtbo分区成功，请点击确认重启查看效果！");
-			b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+			b.setTitle(R.string.dialog_title);
+			b.setMessage(R.string.flash_success);
+			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 				{
 					public void onClick(DialogInterface d, int i)
 					{
@@ -140,15 +146,15 @@ public class MainActivity extends AppCompatActivity
 		{
 			if (imgFile == null)
 			{
-				Toast.makeText(this, "请选择文件", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, R.string.no_select_file, Toast.LENGTH_LONG).show();
 			}
 			else
 			{
 				Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
 				AlertDialog.Builder b = new AlertDialog.Builder(this);
-				b.setTitle("成功");
-				b.setMessage("刷入dtbo分区成功，请点击确认重启查看效果！");
-				b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+				b.setTitle(R.string.dialog_title);
+				b.setMessage(R.string.flash_success);
+				b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 					{
 						public void onClick(DialogInterface d, int i)
 						{
@@ -168,9 +174,9 @@ public class MainActivity extends AppCompatActivity
 	{
 		Shell.SU.run("dd if=" + getExternalCacheDir().getAbsolutePath() + "/dtbo_60Hz.img" + " of=/dev/block/by-name/dtbo");
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		b.setTitle("成功");
-		b.setMessage("刷入dtbo分区成功，请点击确认重启查看效果！");
-		b.setPositiveButton("确认", new DialogInterface.OnClickListener()
+		b.setTitle(R.string.dialog_title);
+		b.setMessage(R.string.flash_success);
+		b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 			{
 				public void onClick(DialogInterface d, int i)
 				{
@@ -246,7 +252,6 @@ public class MainActivity extends AppCompatActivity
 
 	public void select_onClick(View view)
 	{
-		EditText e = findViewById(R.id.custom_input);
 		selectFile(this);
 	}
 
@@ -258,7 +263,7 @@ public class MainActivity extends AppCompatActivity
 
 		try
 		{
-			startActivityForResult(Intent.createChooser(intent, "选择img文件"), 0);
+			startActivityForResult(intent, 0);
 		}
 		catch (ActivityNotFoundException e)
 		{
@@ -275,7 +280,7 @@ public class MainActivity extends AppCompatActivity
 				if (resultCode == RESULT_OK)
 				{
 					Uri uri = data.getData();
-					imgFile = UriToPathUtils.getRealFilePath(this, uri);
+					imgFile = FileUtils.getFilePathByUri(this, uri);
 					EditText e = findViewById(R.id.custom_input);
 					e.setText(imgFile);
 				}

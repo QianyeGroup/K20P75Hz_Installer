@@ -28,9 +28,10 @@
 		<RadioButton
 			android:id="@+id/custom"
 			android:onClick="custom_onClick"
+			android:textAllCaps="false"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="自定义"/>
+			android:text="@string/custom"/>
 
 	</LinearLayout>
 
@@ -39,7 +40,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:gravity="center"
-		android:text="请选择dtbo的img，选错变砖概不负责。"
+		android:text="@string/custom_tips"
 		android:visibility="gone"/>
 
 	<LinearLayout
@@ -51,7 +52,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:ems="10"
-			android:hint="请选择文件"
+			android:hint="@string/custom_input"
 			android:gravity="center"
 			android:visibility="gone"
 			android:singleLine="true"/>
@@ -60,7 +61,8 @@
 			android:id="@+id/custom_select"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="选择"
+			android:text="@string/custom_select"
+			android:textAllCaps="false"
 			android:onClick="select_onClick"
 			android:visibility="gone"/>
 
@@ -74,13 +76,15 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="install"
-			android:text="安装"/>
+			android:textAllCaps="false"
+			android:text="@string/install"/>
 
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="uninstall"
-			android:text="卸载"/>
+			android:textAllCaps="false"
+			android:text="@string/uninstall"/>
 
 	</LinearLayout>
 
@@ -92,19 +96,21 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="test"
-			android:text="测试刷新率"/>
+			android:textAllCaps="false"
+			android:text="@string/test"/>
 
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="join"
-			android:text="加群交流"/>
+			android:textAllCaps="false"
+			android:text="@string/join_group"/>
 
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="get81"
-			android:text="获取81Hz"
+			android:text="@string/get81"
 			android:textAllCaps="false"/>
 
 	</LinearLayout>
@@ -113,7 +119,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:onClick="atomSand"
-		android:text="刷新率作者：酷安@AtomSand，点击打开主页。"
+		android:text="@string/atom_sand"
 		android:gravity="center"/>
 
 	<LinearLayout
@@ -124,14 +130,15 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:onClick="pay"
-			android:text="打赏(真心)"/>
+			android:textAllCaps="false"
+			android:text="@string/pay"/>
 
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAllCaps="false"
 			android:onClick="pay_atomSand"
-			android:text="打赏(AtomSand)"/>
+			android:text="@string/pay_atom_sand"/>
 
 	</LinearLayout>
 

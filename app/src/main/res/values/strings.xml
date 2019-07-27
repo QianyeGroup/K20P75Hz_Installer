@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">K20 Pro 75Hz安装器</string>
-    
+    <string name="app_name">K20 Pro 75Hz Installer</string>
+    <string name="no_root">Get ROOT permission failed!</string>
+    <string name="no_raphael">Your device not support，Support only Redmi K20 Pro(raphael)！</string>
+	<string name="no_support_711">Your MIUI version not support，Please downgrade to 9.7.11(contain) previous versions！</string>
+	<string name="refresh_rate">Refresh Rate\n</string>
+    <string name="dialog_title">Tips</string>
+    <string name="yes">OK</string>
+    <string name="no_select_file">Please select file!</string>
+    <string name="flash_success">Flash dtbo block success，Please click OK reboot device view effect！</string>
+    <string name="score">Like this APP? Give our five scores？</string>
+    <string name="good">OK</string>
+    <string name="no_good">No!</string>
+	
+	<string name="join_group">Join Group</string>
+    <string name="custom">Custom</string>
+	<string name="custom_tips">Please select dtbo block img file.</string>
+	<string name="custom_input">Please Select File.</string>
+	<string name="custom_select">Select</string>
+	<string name="install">Install</string>
+    <string name="uninstall">Uninstall</string>
+	<string name="test">Refresh Rate Test</string>
+	<string name="get81">Get it 81Hz</string>
+	<string name="atom_sand">Refresh Rate Author：Coolapk@AtomSand，Click Open Home Page。</string>
+	<string name="pay">Donate(RealHeart)</string>
+	<string name="pay_atom_sand">Donate(AtomSand)</string>
 </resources>
