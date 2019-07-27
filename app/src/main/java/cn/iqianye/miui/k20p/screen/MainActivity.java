@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-		String[] verArr = UpdateUtils.getNewVersionInfo("1907260");
-		Toast.makeText(this,verArr[1],Toast.LENGTH_LONG).show();
+		//String ver = UpdateUtils.getNewVersionInfo("1907260");
+		//Toast.makeText(this,ver,Toast.LENGTH_LONG).show();
 		
 		
 		
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
 			b.show();
         }
 		else
-		if (OtherUtils.isSupport())
+		if (!OtherUtils.isSupport())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
 			b.setTitle(R.string.dialog_title);
