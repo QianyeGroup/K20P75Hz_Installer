@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">K20 Pro 75Hz安装器</string>
-    <string name="no_root">获取ROOT权限失败，请检查是否给予本软件ROOT权限！</string>
-    <string name="no_raphael">不支持您的设备，只支持Redmi K20 Pro(raphael)！</string>
-	<string name="no_support_711">不支持401驱动的MIUI版本，请降级至9.7.11(包括)之前的版本！</string>
-	<string name="refresh_rate">当前刷新率(仅供参考)\n</string>
+    <string name="app_name">K20 Pro 75Hz安裝器</string>
+    <string name="no_root">獲取ROOT權限失敗，請檢查是否給予本軟件ROOT權限！</string>
+    <string name="no_raphael">不支持您的設備，只支持Redmi K20 Pro(raphael)！</string>
+	<string name="no_support_711">不支持401驅動的MIUI版本，請降級至9.7.11(包括)之前的版本！</string>
+	<string name="refresh_rate">當前刷新率(僅供參考)\n</string>
     <string name="dialog_title">提示</string>
-    <string name="yes">确认</string>
+    <string name="yes">確認</string>
     <string name="no">取消</string>
-    <string name="no_select_file">请选择文件！</string>
-    <string name="flash_success">刷入dtbo分区成功，请点击确认重启查看效果！</string>
-    <string name="score">喜欢这个APP吗，给个五星好评可好？</string>
+    <string name="no_select_file">請選擇文件！</string>
+    <string name="flash_success">刷入dtbo分區成功，請點擊確認重啟查看效果！</string>
+    <string name="score">喜歡這個APP嗎，給個五星好評可好？</string>
     <string name="good">好</string>
     <string name="no_good">我就不！</string>
 	
 	<string name="join_group">加群交流</string>
-    <string name="custom">自定义</string>
-	<string name="custom_tips">请选择dtbo的img，选错变砖概不负责。</string>
-	<string name="custom_input">请选择图片</string>
-	<string name="custom_select">选择</string>
-	<string name="install">安装</string>
-    <string name="uninstall">卸载</string>
-	<string name="test">测试刷新率</string>
-	<string name="get81">获取81Hz</string>
-	<string name="atom_sand">刷新率作者：酷安@AtomSand，点击打开主页。</string>
-	<string name="pay">打赏(真心)</string>
-	<string name="pay_atom_sand">打赏(AtomSand)</string>
+    <string name="custom">自定義</string>
+	<string name="custom_tips">請選擇dtbo的img，選錯變轉概不負責。</string>
+	<string name="custom_input">請選擇文件</string>
+	<string name="custom_select">選擇</string>
+	<string name="install">安裝</string>
+    <string name="uninstall">卸載</string>
+	<string name="test">測試刷新率</string>
+	<string name="get81">獲取81Hz</string>
+	<string name="atom_sand">刷新率作者：酷安@AtomSand，點擊打開主頁。</string>
+	<string name="pay">打賞(真心)</string>
+	<string name="pay_atom_sand">打賞(AtomSand)</string>
 </resources>

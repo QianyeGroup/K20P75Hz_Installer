@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="test"
+        android:enabled="true"
+        android:icon="@mipmap/icon"
+        android:shortcutLongLabel="@string/test"
+        android:shortcutShortLabel="@string/test">
+        <intent
+			android:action="action.VIEW"
+            android:targetClass="com.androlua.Main"
+            android:targetPackage="cn.iqianye.displaytest">
+        </intent>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>

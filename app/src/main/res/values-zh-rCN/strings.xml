@@ -17,7 +17,7 @@
 	<string name="join_group">加群交流</string>
     <string name="custom">自定义</string>
 	<string name="custom_tips">请选择dtbo的img，选错变砖概不负责。</string>
-	<string name="custom_input">请选择图片</string>
+	<string name="custom_input">请选择文件</string>
 	<string name="custom_select">选择</string>
 	<string name="install">安装</string>
     <string name="uninstall">卸载</string>
