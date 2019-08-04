@@ -64,6 +64,35 @@ public class OtherUtils
 			case "9.7.27":
 			case "9.7.28":
 			case "9.7.29":
+			case "9.7.15":
+			case "9.7.16":
+			case "9.7.17":
+			case "9.7.18":
+			case "9.7.19":
+			case "9.7.20":
+			case "9.7.21":
+			case "9.7.22":
+			case "9.7.23":
+			case "9.7.24":
+			case "9.7.25":
+			case "9.7.26":
+			case "9.7.27":
+			case "9.7.28":
+			case "9.7.29":
+			case "9.7.30":
+			case "9.8.1":
+			case "9.8.2":
+			case "9.8.3":
+			case "9.8.4":
+			case "9.8.5":
+			case "9.8.6":
+			case "9.8.7":
+			case "9.8.9":
+			case "9.8.8":
+			case "9.8.10":
+			case "9.8.11":
+			case "9.8.12":
+			case "9.8.13":
 				return false;
 			default:
 				return true;

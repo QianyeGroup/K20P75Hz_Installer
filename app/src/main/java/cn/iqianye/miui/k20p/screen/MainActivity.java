@@ -23,6 +23,8 @@ import cn.iqianye.miui.k20p.screen.utils.FileUtils;
 import com.jaredrummler.android.shell.Shell;
 import java.io.File;
 import cn.iqianye.miui.k20p.screen.utils.UpdateUtils;
+import cn.iqianye.miui.k20p.screen.utils.DownloadUtils;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -33,32 +35,13 @@ public class MainActivity extends AppCompatActivity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-		//String ver = UpdateUtils.getNewVersionInfo("1907260");
-		//Toast.makeText(this,ver,Toast.LENGTH_LONG).show();
-		
-		
-		
+	    TextView AD = findViewById(R.id.ad);
+		AD.setText("[广告]十万QQ名片赞只需3.66元，十分钟到账！\n");
 		if (!OtherUtils.isRaphael())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
 			b.setTitle(R.string.dialog_title);
 			b.setMessage(R.string.no_raphael);
-			b.setCancelable(false);
-			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
-				{
-					public void onClick(DialogInterface d, int i)
-					{
-						finish();
-					}
-				});
-			b.show();
-        }
-		else
-		if (!OtherUtils.isSupport())
-        {
-            AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle(R.string.dialog_title);
-			b.setMessage(R.string.no_support_711);
 			b.setCancelable(false);
 			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 				{
@@ -126,20 +109,32 @@ public class MainActivity extends AppCompatActivity
 		RadioButton custom = findViewById(R.id.custom);
 		if (seven.isChecked())
 		{
-			imgFile = getExternalCacheDir().getAbsolutePath() + "/dtbo_75Hz.img";
-			Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
-			AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle(R.string.dialog_title);
-			b.setMessage(R.string.flash_success);
-			b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
-				{
-					public void onClick(DialogInterface d, int i)
+			if (!OtherUtils.isSupport())
+			{
+				AlertDialog.Builder b = new AlertDialog.Builder(this);
+				b.setTitle(R.string.dialog_title);
+				b.setMessage(R.string.no_support_711);
+				b.setCancelable(false);
+				b.setPositiveButton(R.string.yes, null);
+				b.show();
+			}
+			else
+			{
+				imgFile = getExternalCacheDir().getAbsolutePath() + "/dtbo_75Hz.img";
+				Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
+				AlertDialog.Builder b = new AlertDialog.Builder(this);
+				b.setTitle(R.string.dialog_title);
+				b.setMessage(R.string.flash_success);
+				b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 					{
-						Shell.SU.run("reboot");
-					}
-				});
-			b.show();
-			imgFile = null;
+						public void onClick(DialogInterface d, int i)
+						{
+							Shell.SU.run("reboot");
+						}
+					});
+				b.show();
+				imgFile = null;
+			}
 		}
 		else
 		if (custom.isChecked())
@@ -204,6 +199,11 @@ public class MainActivity extends AppCompatActivity
 	public void atomSand(View view)
 	{
 		OtherUtils.openUrl(this, "http://www.coolapk.com/u/2794437");
+	}
+
+	public void ad(View view)
+	{
+		OtherUtils.openUrl(this, "http://qianye.tzdsb.com/?cid=141&tid=3102");
 	}
 
 	public void get81(View view)
