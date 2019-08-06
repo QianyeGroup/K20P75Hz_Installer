@@ -10,7 +10,8 @@
     <string name="no">取消</string>
     <string name="no_select_file">请选择文件！</string>
     <string name="flash_success">刷入dtbo分区成功，请点击确认重启查看效果！</string>
-    <string name="score">喜欢这个APP吗，给个五星好评可好？</string>
+    <string name="flash_success_custom">刷入dtbo分区成功，请点击确认重启查看效果！\n注意：81Hz不支持9.7.11以上版本</string>
+	<string name="score">喜欢这个APP吗，给个五星好评可好？</string>
     <string name="good">好</string>
     <string name="no_good">我就不！</string>
 	

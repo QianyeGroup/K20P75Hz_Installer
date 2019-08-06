@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 	    TextView AD = findViewById(R.id.ad);
-		AD.setText("[广告]十万QQ名片赞只需3.66元，十分钟到账！\n");
+		AD.setText("[广告]小叶QQ机器人，自动撤回，群管，语音识别，娱乐游戏，你值得拥有！\n");
 		if (!OtherUtils.isRaphael())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity
 				Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
 				AlertDialog.Builder b = new AlertDialog.Builder(this);
 				b.setTitle(R.string.dialog_title);
-				b.setMessage(R.string.flash_success);
+				b.setMessage(R.string.flash_success_custom);
 				b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
 					{
 						public void onClick(DialogInterface d, int i)
@@ -183,7 +183,18 @@ public class MainActivity extends AppCompatActivity
 
 	public void test(View view)
 	{
-		MarketUtils.launchAppDetail(this, "cn.iqianye.displaytest", "com.coolapk.market");
+		try
+		{
+			Intent intent = new Intent();
+			intent.setClassName("cn.iqianye.displaytest", "com.androlua.Welcome");
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			MarketUtils.launchAppDetail(this, "cn.iqianye.displaytest", "com.coolapk.market");
+		}
 	}
 
 	public void pay(View view)
@@ -203,12 +214,25 @@ public class MainActivity extends AppCompatActivity
 
 	public void ad(View view)
 	{
-		OtherUtils.openUrl(this, "http://qianye.tzdsb.com/?cid=141&tid=3102");
+		OtherUtils.openUrl(this, "https://store.iqianye.cn/?cid=3&tid=7");
 	}
 
 	public void get81(View view)
 	{
-		OtherUtils.openUrl(this, "https://www.coolapk.com/feed/12920689?shareKey=NDEzMWFmOWI2YjE4NWQzOTQ1Yjk~&shareUid=2042584&shareFrom=com.coolapk.market_9.4");
+		
+		Intent intent = new Intent();
+        intent.setData(Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=2788801488"));
+        // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        try
+        {
+            startActivity(intent);
+        }
+        catch (Exception e)
+        {
+            // 未安装手Q或安装的版本不支持
+            MarketUtils.launchAppDetail(this, "com.tencent.mobileqq", null);
+        }
 	}
 
 	public void join(View view)
@@ -291,9 +315,8 @@ public class MainActivity extends AppCompatActivity
 
 	/****************
      *
-     * 发起添加群流程。群号：真心极客 - Redmi K20/Pro |(691802087) 的 key 为： POi0sGneG6tKk4sDLTHDevyaIFWH6C4a
-     * 调用 joinQQGroup(POi0sGneG6tKk4sDLTHDevyaIFWH6C4a) 即可发起手Q客户端申请加群 真心极客 - Redmi K20/Pro |(691802087)
-     *
+     * 发起添加群流程。
+     * 
      * @param key 由官网生成的key
      * @return 返回true表示呼起手Q成功，返回false表示呼起失败
      ******************/
