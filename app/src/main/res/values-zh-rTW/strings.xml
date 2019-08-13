@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">K20 Pro 75Hz安裝器</string>
+    <string name="app_name">K20P 屏幕刷新率</string>
     <string name="no_root">獲取ROOT權限失敗，請檢查是否給予本軟件ROOT權限！</string>
     <string name="no_raphael">不支持您的設備，只支持Redmi K20 Pro(raphael)！</string>
 	<string name="no_support_711">不支持401驅動的MIUI版本，請降級至9.7.11(包括)之前的版本！</string>
@@ -23,7 +23,6 @@
 	<string name="install">安裝</string>
     <string name="uninstall">卸載</string>
 	<string name="test">測試刷新率</string>
-	<string name="get81">獲取81Hz</string>
 	<string name="atom_sand">刷新率作者：酷安@AtomSand，點擊打開主頁。</string>
 	<string name="pay">打賞(真心)</string>
 	<string name="pay_atom_sand">打賞(AtomSand)</string>

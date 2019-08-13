@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">K20 Pro 75Hz Installer</string>
+    <string name="app_name">K20P Refresh Rate</string>
     <string name="no_root">Get ROOT permission failed!</string>
     <string name="no_raphael">Your device not support，Support only Redmi K20 Pro(raphael)!</string>
 	<string name="no_support_711">Your MIUI version not support，Please downgrade to 9.7.11(contain) previous versions!</string>
@@ -22,7 +22,6 @@
 	<string name="install">Install</string>
     <string name="uninstall">Uninstall</string>
 	<string name="test">Refresh Rate Test</string>
-	<string name="get81">Get it 81Hz</string>
 	<string name="atom_sand">Refresh Rate Author：Coolapk@AtomSand，Click Open Home Page.</string>
 	<string name="pay">Donate(RealHeart)</string>
 	<string name="pay_atom_sand">Donate(AtomSand)</string>

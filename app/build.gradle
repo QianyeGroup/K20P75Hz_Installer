@@ -8,8 +8,8 @@ android {
         applicationId "cn.iqianye.miui.k20p.screen"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1908070
-        versionName "1.1.9"
+        versionCode 1908130
+        versionName "2.0.0"
     }
     buildTypes {
         release {

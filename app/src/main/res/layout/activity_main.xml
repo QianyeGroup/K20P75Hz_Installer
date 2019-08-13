@@ -30,6 +30,13 @@
 			android:layout_height="wrap_content"
 			android:text="75Hz"
 			android:checked="true"/>
+		
+		<RadioButton
+			android:id="@+id/eight"
+			android:onClick="eight_onClick"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="81Hz"/>
 
 		<RadioButton
 			android:id="@+id/custom"
@@ -111,13 +118,6 @@
 			android:onClick="join"
 			android:textAllCaps="false"
 			android:text="@string/join_group"/>
-
-		<Button
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:onClick="get81"
-			android:text="@string/get81"
-			android:textAllCaps="false"/>
 
 	</LinearLayout>
 

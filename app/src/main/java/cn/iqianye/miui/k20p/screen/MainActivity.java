@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 	    TextView AD = findViewById(R.id.ad);
-		AD.setText("[广告]小叶QQ机器人，自动撤回，群管，语音识别，娱乐游戏，你值得拥有！\n");
+		AD.setText("[广告]广告位招租\n");
 		if (!OtherUtils.isRaphael())
         {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity
 	public void install(View view)
 	{
 		RadioButton seven = findViewById(R.id.seven);
+		RadioButton eight = findViewById(R.id.eight);
 		RadioButton custom = findViewById(R.id.custom);
 		if (seven.isChecked())
 		{
@@ -121,6 +122,36 @@ public class MainActivity extends AppCompatActivity
 			else
 			{
 				imgFile = getExternalCacheDir().getAbsolutePath() + "/dtbo_75Hz.img";
+				Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
+				AlertDialog.Builder b = new AlertDialog.Builder(this);
+				b.setTitle(R.string.dialog_title);
+				b.setMessage(R.string.flash_success);
+				b.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface d, int i)
+						{
+							Shell.SU.run("reboot");
+						}
+					});
+				b.show();
+				imgFile = null;
+			}
+		}
+		else
+		if (eight.isChecked())
+		{
+			if (!OtherUtils.isSupport())
+			{
+				AlertDialog.Builder b = new AlertDialog.Builder(this);
+				b.setTitle(R.string.dialog_title);
+				b.setMessage(R.string.no_support_711);
+				b.setCancelable(false);
+				b.setPositiveButton(R.string.yes, null);
+				b.show();
+			}
+			else
+			{
+				imgFile = getExternalCacheDir().getAbsolutePath() + "/dtbo_81Hz.img";
 				Shell.SU.run("dd if=" + imgFile + " of=/dev/block/by-name/dtbo");
 				AlertDialog.Builder b = new AlertDialog.Builder(this);
 				b.setTitle(R.string.dialog_title);
@@ -214,14 +245,8 @@ public class MainActivity extends AppCompatActivity
 
 	public void ad(View view)
 	{
-		OtherUtils.openUrl(this, "https://store.iqianye.cn/?cid=3&tid=7");
-	}
-
-	public void get81(View view)
-	{
-		
 		Intent intent = new Intent();
-        intent.setData(Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=2788801488"));
+        intent.setData(Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=1307993674"));
         // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面
         //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         try
@@ -243,11 +268,13 @@ public class MainActivity extends AppCompatActivity
 	public void seven_onClick(View view)
 	{
 		RadioButton seven = findViewById(R.id.seven);
+		RadioButton eight = findViewById(R.id.eight);
 		RadioButton custom = findViewById(R.id.custom);
-		if (custom.isChecked())
+		if (custom.isChecked() || eight.isChecked())
 		{
 			custom.setChecked(false);
 			seven.setChecked(true);
+			eight.setChecked(false);
 			Button select = findViewById(R.id.custom_select);
 			TextView tips = findViewById(R.id.custom_tips);
 			EditText input = findViewById(R.id.custom_input);
@@ -257,14 +284,35 @@ public class MainActivity extends AppCompatActivity
 		}
 	}
 
+	public void eight_onClick(View view)
+	{
+		RadioButton seven = findViewById(R.id.seven);
+		RadioButton eight = findViewById(R.id.eight);
+		RadioButton custom = findViewById(R.id.custom);
+		if (seven.isChecked() || custom.isChecked())
+		{
+			eight.setChecked(true);
+			seven.setChecked(false);
+			custom.setChecked(false);
+			Button select = findViewById(R.id.custom_select);
+			TextView tips = findViewById(R.id.custom_tips);
+			EditText input = findViewById(R.id.custom_input);
+			select.setVisibility(View.GONE);
+			tips.setVisibility(View.GONE);
+			input.setVisibility(View.GONE);
+		}
+	}
+	
 	public void custom_onClick(View view)
 	{
 		RadioButton seven = findViewById(R.id.seven);
+		RadioButton eight = findViewById(R.id.eight);
 		RadioButton custom = findViewById(R.id.custom);
-		if (seven.isChecked())
+		if (seven.isChecked() || eight.isChecked())
 		{
 			custom.setChecked(true);
 			seven.setChecked(false);
+			eight.setChecked(false);
 			Button select = findViewById(R.id.custom_select);
 			TextView tips = findViewById(R.id.custom_tips);
 			EditText input = findViewById(R.id.custom_input);
@@ -273,6 +321,7 @@ public class MainActivity extends AppCompatActivity
 			input.setVisibility(View.VISIBLE);
 		}
 	}
+	
 
 	public void select_onClick(View view)
 	{
