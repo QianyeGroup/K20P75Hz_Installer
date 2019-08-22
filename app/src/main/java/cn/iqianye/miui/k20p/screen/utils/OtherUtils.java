@@ -93,6 +93,21 @@ public class OtherUtils
 			case "9.8.11":
 			case "9.8.12":
 			case "9.8.13":
+			case "9.8.14":
+			case "9.8.15":
+			case "9.8.16":
+			case "9.8.17":
+			case "9.8.18":
+			case "9.8.19":
+			case "9.8.20":
+			case "9.8.21":
+			case "9.8.22":
+			case "9.8.23":
+			case "9.8.24":
+			case "9.8.25":
+			case "9.8.26":
+			case "9.8.27":
+			case "9.8.28":
 				return false;
 			default:
 				return true;

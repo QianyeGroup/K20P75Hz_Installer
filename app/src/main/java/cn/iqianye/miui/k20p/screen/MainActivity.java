@@ -262,7 +262,7 @@ public class MainActivity extends AppCompatActivity
 
 	public void join(View view)
 	{
-		joinQQGroup("POi0sGneG6tKk4sDLTHDevyaIFWH6C4a");
+		joinQQGroup("G8bsGzDnBUE3gaotNxQsw_eNp0jrXtgk");
 	}
 
 	public void seven_onClick(View view)

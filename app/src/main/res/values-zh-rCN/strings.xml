@@ -3,7 +3,7 @@
     <string name="app_name">K20P 屏幕刷新率</string>
     <string name="no_root">获取ROOT权限失败，请检查是否给予本软件ROOT权限！</string>
     <string name="no_raphael">不支持您的设备，只支持Redmi K20 Pro(raphael)！</string>
-	<string name="no_support_711">不支持401驱动的MIUI版本，请降级至9.7.11(包括)之前的版本！</string>
+	<string name="no_support_711">你的MIUI版本不支持，请降级至9.7.11(包括)之前的版本！</string>
 	<string name="refresh_rate">当前刷新率(仅供参考)\n</string>
     <string name="dialog_title">提示</string>
     <string name="yes">确认</string>
