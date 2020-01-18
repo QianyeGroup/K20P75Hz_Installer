@@ -1,52 +1,61 @@
 package cn.iqianye.miui.k20p.screen.utils;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL; 
 
-public class DownloadUtils
-{ 
-	public static void  downLoadFromUrl(String urlStr,String fileName,String savePath) throws IOException{
-        URL url = new URL(urlStr); 
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();  
-        //设置超时间为5秒
-        conn.setConnectTimeout(5*1000);
-        //防止屏蔽程序抓取而返回403错误
-        conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
-
-        //得到输入流
-        InputStream input = conn.getInputStream();  
-        //获取自己数组
-        byte[] getData = readInputStream(input);    
-
-        //文件保存位置
-        File saveDir = new File(savePath);
-        if(!saveDir.exists()){
-            saveDir.mkdir();
+public class DownloadUtils { 
+    /**
+     * 从服务器下载文件
+     * @param path 下载文件的地址
+     * @param FileName 文件名字
+     */
+    public void downLoad(final String netUrl ,final String filePath, final String FileName) {
+        new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        URL url = new URL(netUrl);
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setReadTimeout(5000);
+                        con.setConnectTimeout(5000);
+                        con.setRequestProperty("Charset", "UTF-8");
+                        con.setRequestMethod("GET");
+                        if (con.getResponseCode() == 200) {
+                            InputStream is = con.getInputStream();//获取输入流
+                            FileOutputStream fileOutputStream = null;//文件输出流
+                            if (is != null) {
+                                fileOutputStream = new FileOutputStream(createFile(filePath,FileName));//指定文件保存路径，代码看下一步
+                                byte[] buf = new byte[1024];
+                                int ch;
+                                while ((ch = is.read(buf)) != -1) {
+                                    fileOutputStream.write(buf, 0, ch);//将获取到的流写入文件中
+                                }
+                            }
+                            if (fileOutputStream != null) {
+                                fileOutputStream.flush();
+                                fileOutputStream.close();
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+    }
+    /**
+     * 创建一个文件
+     * @param filePath 文件路径
+     * @param FileName 文件名
+     * @return
+     */
+    public File createFile(String filePath, String FileName) {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            file.mkdirs();
         }
-        File file = new File(saveDir+File.separator+fileName);    
-        FileOutputStream output = new FileOutputStream(file);     
-        output.write(getData); 
-        if(output!=null){
-        	output.close();  
-        }
-        if(input!=null){
-            input.close();
-        }
-        System.out.println("download success!!");
+        return new File(filePath, FileName);
     }
 
-    public static  byte[] readInputStream(InputStream inputStream) throws IOException {  
-        byte[] buffer = new byte[10240];  
-        int len = 0;  
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();  
-        while((len = inputStream.read(buffer)) != -1) {  
-            bos.write(buffer, 0, len);  
-        }  
-        bos.close();  
-        return bos.toByteArray();  
-    }
 }

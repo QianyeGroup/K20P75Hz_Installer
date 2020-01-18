@@ -6,21 +6,16 @@ import android.widget.Toast;
 import com.jaredrummler.android.shell.Shell;
 import com.stericson.RootTools.RootTools;
 
-public class OtherUtils
-{
-	public static void openUrl(Activity activity, String url)
-	{
+public class OtherUtils {
+	public static void openUrl(Activity activity, String url) {
 		Intent intent;
-		try
-		{
+		try {
 			intent = Intent.parseUri(url,
 									 Intent.URI_INTENT_SCHEME);
 			intent.addCategory(Intent.CATEGORY_BROWSABLE);
 			intent.setComponent(null);
 			activity.startActivity(intent);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			Toast.makeText(activity, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
@@ -28,27 +23,21 @@ public class OtherUtils
 
 
 
-	public static Boolean isRaphael()
-	{
+	public static Boolean isRaphael() {
 		String s = Build.DEVICE;
-		if ("raphael".equals(s))
-		{
+		if ("raphael".equals(s)) {
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
-	public static Boolean isSupport()
-	{
+	public static Boolean isSupport() {
 		String ver = 
 			Shell.SH.run
 		(
 			"getprop ro.build.version.incremental"
 		).toString();
-		switch (ver)
-		{
+		switch (ver) {
 			case "9.7.15":
 			case "9.7.16":
 			case "9.7.17":
@@ -110,21 +99,20 @@ public class OtherUtils
 			case "9.8.28":
 				return false;
 			default:
-				return true;
+				if ("10".equals(Build.VERSION.RELEASE)) {
+					return false;
+				} else {
+                    return true;
+                }
 
 		}
 	}
-    public static Boolean checkRoot()
-    {
-        if (RootTools.isRootAvailable())
-        {
-            if (!RootTools.isAccessGiven())
-            {
+    public static Boolean checkRoot() {
+        if (RootTools.isRootAvailable()) {
+            if (!RootTools.isAccessGiven()) {
                 return false;
             }
-        }
-        else
-        {
+        } else {
             return false;
         }
         return true;
